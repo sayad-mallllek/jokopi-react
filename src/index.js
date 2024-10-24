@@ -1,16 +1,25 @@
 /* eslint-disable react/jsx-filename-extension */
-import './styles/index.css';
+import "./styles/index.css";
 
-import React from 'react';
+import React from "react";
 
-import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
-import { Notification } from './components/Notification';
-import store, { persistor } from './redux/store';
-import reportWebVitals from './reportWebVitals';
-import Router from './router';
+import { Notification } from "./components/Notification";
+import store, { persistor } from "./redux/store";
+import reportWebVitals from "./reportWebVitals";
+import Router from "./router";
+
+import axios from "axios";
+
+axios.defaults.baseURL = new URL(
+  "/api/v1",
+  process.env.REACT_APP_BACKEND_HOST
+).href;
+
+console.log("baseURL", axios.defaults.baseURL);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
